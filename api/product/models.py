@@ -6,7 +6,7 @@ from api.category.models import Category
 class Product(models.Model):
     name = models.CharField(max_length=50)
     discription = models.CharField(max_length=250)
-    prize = models.CharField(max_length=50)
+    price = models.CharField(max_length=50)
     stock = models.CharField(max_length=50)
     is_active = models.BooleanField(default=True, blank=True)
     image = models.ImageField(upload_to="images", blank=True, null=True)
