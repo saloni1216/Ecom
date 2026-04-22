@@ -8,6 +8,7 @@ pytest = "*"
 django = "*"
 django-cors-headers = "*"
 djangorestframework = "*"
+braintree = "*"
 
 [dev-packages]
 
