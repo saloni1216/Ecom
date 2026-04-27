@@ -66,14 +66,17 @@ export const isAuthenticated =() => {
 }
 
 export const signout  = next => {
-    const userId = isAuthenticated() && isAuthenticated().user.id
+    const token = isAuthenticated() 
 
     if(typeof window != undefined){
         localStorage.removeItem("jwt")
         cartEmpty(() => {});
 
-        return fetch(`${API}user/logout/${userId}`,{
-            method:"GET"
+         return fetch(`${API}user/logout/`,{
+            method:"GET",
+            headers:{
+                Authorization: `Token ${token}`  
+            }
         })
         .then(response=>{
             console.log("signout success")

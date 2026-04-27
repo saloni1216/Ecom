@@ -36,8 +36,8 @@ export const Signin = () => {
     .then(data =>{
         console.log("Data ", data);
         if(data.token){
-            let sessionToken= data.token;
-            authenticate(sessionToken, () => {
+            // let sessionToken= data.token;
+            authenticate(data, () => {
                 console.log("TOKEN ADDED")
                 setValues({
                     ...values,

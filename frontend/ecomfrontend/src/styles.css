@@ -1,3 +1,9 @@
 body{
-  background: #343a40;
+ background: linear-gradient(to right, #FF4FA3, #FF6FB5, #FFD6E8);
+  color: #F8F9FA;
+}
+
+.nav-link:hover {
+    color: #FFC107;
+    transition: 0.3s;
 }
