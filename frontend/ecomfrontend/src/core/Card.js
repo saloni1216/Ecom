@@ -1,18 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { ImageHelper } from "./helper/imageHelper";
 import { Navigate } from "react-router-dom";
 import { addItemToCart, removieItemFromCart } from "./helper/cartHelper";
+import { isAuthenticated } from "../auth/helper";
 
-const isAuthenticated = true;
 
-const Card = ({ product, addtoCart = true, removeFromCart = false }) => {
+
+const Card = ({ product, addtoCart = true, removeFromCart = false, reload = undefined, setReload = f => f, }) => {
+
+  const [redirect, setRedirect]=useState(false)
   const cardTitle = product ? product.name : "Default photo";
   const cardDiscription = product ? product.discription : "Default discription";
   const carPrice = product ? product.price : "default price";
 
   const addToCart = () => {
-    if (isAuthenticated) {
-      addItemToCart(product, () => {});
+    if (isAuthenticated()) {
+      addItemToCart(product, () => setRedirect(true));
       console.log("Added to cart");
     } else {
       console.log("Login Please!");
@@ -27,7 +30,7 @@ const Card = ({ product, addtoCart = true, removeFromCart = false }) => {
 
   const showAddToCart = (addToCart) => {
     return (
-      addToCart && (
+      addtoCart && (
         <button
           onClick={addToCart}
           className="btn btn-block mt-2 mb-2"
@@ -51,6 +54,7 @@ const Card = ({ product, addtoCart = true, removeFromCart = false }) => {
         <button
           onClick={() => {
             removieItemFromCart(product._id);
+            setReload(!reload)
             console.log("Product removed from cart");
           }}
           className="btn btn-block btn-outline-danger mt-2 mb-2"
@@ -83,6 +87,7 @@ const Card = ({ product, addtoCart = true, removeFromCart = false }) => {
         {cardTitle}
       </div>
       <div className="card-body">
+       {getAredirect(redirect)} 
         <ImageHelper product={product} />
 
         <p

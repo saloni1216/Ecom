@@ -12,7 +12,15 @@ export const addItemToCart = (item,next) =>{
     }
 }
 
-export const removieItemFromCart = productId => {
+export const loadCart = () => {
+    if(typeof window !== undefined){
+        if(localStorage.getItem("cart")){
+            return JSON.parse(localStorage.getItem("cart"))
+        }
+    }
+}
+
+export const removieItemFromCart = (productId) => {
     let cart = []
     if(typeof window !== undefined){
         if(localStorage.getItem("cart")){
