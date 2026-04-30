@@ -3,6 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.views.decorators.csrf import csrf_exempt
+from api.order.models import Order 
 
 import braintree
 
@@ -49,6 +50,21 @@ def process_payment(request, id, token):
             "submit_for_settlement":True
         }
     })
+
+    if result.is_success:
+        User = get_user_model()
+        user = User.objects.get(pk=id)   # get user
+
+    product_name = request.POST.get("product_name")
+    total_product = request.POST.get("total_product")
+    print(request.POST)
+    Order.objects.create( 
+        user=user,
+        product_name=product_name,
+        total_product=total_product,
+        transaction_id=result.transaction.id,
+        total_amount=result.transaction.amount
+    )
 
     if result.is_success:
         return JsonResponse({
