@@ -44,10 +44,10 @@ export const Cart = () => {
     return(
         <Base title="Cart Page" description="Welcome to checkout">
             <div className="row text-center">
-                <div className="col-6">
+                <div className="col-5">
                     {products.length > 0 ? (loadAllProducts(products)) : (<h4>No products</h4>)}
                     </div>
-                <div className="col-6">
+                <div className="col-5">
                     {products.length > 0 ? (<PaymentB products={products} setReload={setReload}/>) : (<h4>Please login or add something in cart</h4>)} 
                     </div>
 

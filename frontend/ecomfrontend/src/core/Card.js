@@ -4,11 +4,9 @@ import { Navigate } from "react-router-dom";
 import { addItemToCart, removieItemFromCart } from "./helper/cartHelper";
 import { isAuthenticated } from "../auth/helper";
 
-
-
 const Card = ({ product, addtoCart = true, removeFromCart = false, reload = undefined, setReload = f => f, }) => {
 
-  const [redirect, setRedirect]=useState(false)
+  const [redirect, setRedirect] = useState(false)
   const cardTitle = product ? product.name : "Default photo";
   const cardDiscription = product ? product.discription : "Default discription";
   const carPrice = product ? product.price : "default price";
@@ -35,14 +33,18 @@ const Card = ({ product, addtoCart = true, removeFromCart = false, reload = unde
           onClick={addToCart}
           className="btn btn-block mt-2 mb-2"
           style={{
+            flex: 1,
             backgroundColor: "#FF4FA3",
-            color: "#FFFFFF",
+            color: "#fff",
             border: "none",
             borderRadius: "8px",
-            fontWeight: "bold",
+            padding: "9px 10px",
+            fontWeight: "600",
+            fontSize: "0.8rem",
+            cursor: "pointer",
           }}
         >
-          Add to Cart
+          🛒 Add to Cart
         </button>
       )
     );
@@ -67,57 +69,67 @@ const Card = ({ product, addtoCart = true, removeFromCart = false, reload = unde
 
   return (
     <div
-      className="card"
       style={{
-        backgroundColor: "#1E1E1E",
-        color: "#FFFFFF",
-        border: "2px solid #FF4FA3",
-        borderRadius: "15px",
-        boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
+        backgroundColor: "#1a1a1a",
+        borderRadius: "16px",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        boxShadow: "0 4px 20px rgba(0,0,0,0.4)",
       }}
     >
-      <div
-        className="card-header lead "
-        style={{
-          backgroundColor: "#121212",
-          color: "#FFFFFF",
-          borderBottom: "1px solid #FF4FA3",
-        }}
-      >
-        {cardTitle}
-      </div>
-      <div className="card-body">
-       {getAredirect(redirect)} 
+      {/* ✅ Image box with New badge */}
+      <div style={{ position: "relative", width: "100%", aspectRatio: "4/3", overflow: "hidden", backgroundColor: "#f0f0f0" }}>
+        <span style={{
+          position: "absolute", top: "12px", right: "12px",
+          backgroundColor: "#FF4FA3", color: "#fff",
+          fontSize: "0.72rem", fontWeight: "700",
+          padding: "4px 12px", borderRadius: "20px", zIndex: 2,
+        }}>
+          New
+        </span>
+        {getAredirect(redirect)}
         <ImageHelper product={product} />
+      </div>
 
-        <p
-          className="lead font-weight-normal text-wrap"
-          style={{
-            backgroundColor: "#2C2C2C",
-            color: "#FFD6E8",
-            padding: "10px",
-            borderRadius: "8px",
-          }}
-        >
+      {/* ✅ Card body */}
+      <div style={{ padding: "14px 16px 16px", display: "flex", flexDirection: "column", flexGrow: 1 }}>
+
+        {/* Title */}
+        <h6 style={{ color: "#ffffff", fontWeight: "700", fontSize: "1rem", margin: "0 0 4px 0" }}>
+          {cardTitle}
+        </h6>
+
+        {/* Price */}
+        <p style={{ color: "#FF4FA3", fontWeight: "700", fontSize: "1.1rem", margin: "0 0 6px 0" }}>
+          ₹ {carPrice}
+        </p>
+
+        {/* Description */}
+        <p style={{ color: "#aaaaaa", fontSize: "0.82rem", margin: "0 0 14px 0", flexGrow: 1, lineHeight: "1.4" }}>
           {cardDiscription}
         </p>
 
-        <p
-          className="btn rounded btn-sm px-4"
-          style={{
-            backgroundColor: "#FFC107",
-            color: "#121212",
-            fontWeight: "bold",
-            border: "none",
-          }}
-        >
-          $ {carPrice}
-        </p>
-
-        <div className="row">
-          <div className="col-12">{showAddToCart(addToCart)}</div>
-          <div className="col-12">{showRemoveFromCart(removeFromCart)}</div>
+        {/* Buttons */}
+        <div style={{ display: "flex", gap: "10px", marginTop: "auto" }}>
+          {showAddToCart(addToCart)}
+          <button style={{
+            flex: 1,
+            backgroundColor: "transparent",
+            color: "#ffffff",
+            border: "2px solid #ffffff",
+            borderRadius: "8px",
+            padding: "9px 10px",
+            fontWeight: "600",
+            fontSize: "0.8rem",
+            cursor: "pointer",
+          }}>
+            👁 View Details
+          </button>
+          {showRemoveFromCart(removeFromCart)}
         </div>
+
       </div>
     </div>
   );
