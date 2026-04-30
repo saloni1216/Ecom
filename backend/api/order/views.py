@@ -24,11 +24,20 @@ def add(request, id, token):
     
     if request.method == "POST":
         user_id= id
-        transaction_id=request.POST['transaction_id']
-        amount = request.POST['amount']
-        products =request.POST['products']
+         # ✅ FIXED: safe access (no crash if missing)
+        transaction_id = request.POST.get('transaction_id')
+        amount = request.POST.get('amount')
+        products = request.POST.get('products')
 
-        total_pro = len(products.split(',')[:-1])
+        # ✅ FIXED: handle missing data
+        if not transaction_id or not amount or not products:
+            return JsonResponse({'error': 'Missing required fields'})
+
+        # ✅ FIXED: safe product count
+        try:
+            total_pro = len(products.split(',')[:-1])
+        except:
+            return JsonResponse({'error': 'Invalid products format'})
         UserModel = get_user_model()
 
         try:

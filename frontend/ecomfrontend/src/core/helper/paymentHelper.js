@@ -1,4 +1,4 @@
-import { API } from "../../backend's";
+import { API } from "../../backend";
 
 export const getmeToken = (userId, token) => {
     return fetch(`${API}payment/gettoken/${userId}/${token}/`, {
