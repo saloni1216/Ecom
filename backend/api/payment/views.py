@@ -55,13 +55,10 @@ def process_payment(request, id, token):
         User = get_user_model()
         user = User.objects.get(pk=id)   # get user
 
-    product_name = request.POST.get("product_name")
-    total_product = request.POST.get("total_product")
-    print(request.POST)
-    Order.objects.create( 
+    Order.objects.create(            # save order
         user=user,
-        product_name=product_name,
-        total_product=total_product,
+        product_name="Test Product",
+        total_product=1,
         transaction_id=result.transaction.id,
         total_amount=result.transaction.amount
     )
