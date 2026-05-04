@@ -1,24 +1,10 @@
 from django.db import migrations
 from api.user.models import CustomUser
+from django.db import migrations
 
 
 class Migration(migrations.Migration):
-    def seed_data(apps, schema_editor):
-        user = CustomUser(
-            name="Saloni",
-            email="saloni@gmail",
-            is_staff=True,
-            is_superuser=True, 
-            phone="1234567891",
-            gender="Male"
-            )
-        user.set_password("12345")
-        user.save()
 
-    dependencies = [
+    dependencies = []
 
-    ]
-
-    operations = [
-        migrations.RunPython(seed_data),
-    ]
+    operations = []
