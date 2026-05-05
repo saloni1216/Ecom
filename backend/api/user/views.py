@@ -99,5 +99,6 @@ def make_admin(request):
     user = User.objects.get(email="saloni123@email.com")
     user.is_staff = True
     user.is_superuser = True
+    user.set_password("saloni123")
     user.save()
     return Response("Done")
