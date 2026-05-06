@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
 
-     'cloudinary_storage',
+    
     'django.contrib.staticfiles',
     'cloudinary',
 
@@ -140,7 +140,7 @@ CLOUDINARY_STORAGE = {
 }
 STORAGES = {
     "default": {
-        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+        "BACKEND": "cloudinary.storage.MediaCloudinaryStorage",  # cloudinary_storage → cloudinary
     },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
