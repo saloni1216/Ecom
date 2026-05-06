@@ -1,4 +1,3 @@
-
 import os
 import django
 
@@ -16,4 +15,11 @@ if not User.objects.filter(email=email).exists():
     User.objects.create_superuser(email=email, password=password, name=name)
     print("Superuser created!")
 else:
-    print("Superuser already exists.")
+    # ✅ Existing user ko superuser banao
+    user = User.objects.get(email=email)
+    user.is_staff = True
+    user.is_superuser = True
+    user.is_active = True
+    user.set_password(password)
+    user.save()
+    print("Existing user ko superuser bana diya!")
