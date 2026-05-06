@@ -111,7 +111,7 @@ USE_TZ = True
 
 # Static files
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 # MEDIA_URL = '/media/'
 MEDIA_URL = 'https://res.cloudinary.com/db3jhnu75/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -143,6 +143,6 @@ STORAGES = {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",  # ← yeh karo
+        "BACKEND": "cloudinary_storage.storage.StaticCloudinaryStorage",
     },
 }
