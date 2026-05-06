@@ -11,8 +11,19 @@ email = os.environ.get('DJANGO_SUPERUSER_EMAIL', 'kartik@gmail.com')
 password = os.environ.get('DJANGO_SUPERUSER_PASSWORD', '1234')
 name = os.environ.get('DJANGO_SUPERUSER_NAME', 'Admin')
 
-if not User.objects.filter(email=email).exists():
-    User.objects.create_superuser(email=email, password=password, name=name)
+user, created = User.objects.get_or_create(email=email)
+
+if created:
+    user.name = name
+    user.set_password(password)
+    user.is_staff = True
+    user.is_superuser = True
+    user.save()
     print("Superuser created!")
 else:
-    print("Superuser already exists.")
+ 
+    user.is_staff = True
+    user.is_superuser = True
+    user.set_password(password)  
+    user.save()
+    print("Existing user ko superuser bana diya!")
