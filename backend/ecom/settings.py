@@ -146,3 +146,5 @@ STORAGES = {
         "BACKEND": "cloudinary_storage.storage.StaticCloudinaryStorage",
     },
 }
+
+STATICFILES_STORAGE = "cloudinary_storage.storage.StaticCloudinaryStorage"
