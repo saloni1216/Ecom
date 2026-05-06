@@ -21,7 +21,6 @@ if created:
     user.save()
     print("Superuser created!")
 else:
- 
     user.is_staff = True
     user.is_superuser = True
     user.set_password(password)  
