@@ -56,7 +56,7 @@ def process_payment(request, id, token):
 
     Order.objects.create(            
         user=user,
-       product_name=request.POST.get("products", "Unknown Product"),
+       product_name="Test Product",
         total_product=1,
         transaction_id=result.transaction.id,
         total_amount=result.transaction.amount
