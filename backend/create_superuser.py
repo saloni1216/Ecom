@@ -15,14 +15,16 @@ user, created = User.objects.get_or_create(email=email)
 
 if created:
     user.name = name
+    user.username = email 
     user.set_password(password)
     user.is_staff = True
     user.is_superuser = True
     user.save()
     print("Superuser created!")
 else:
+    user.username = email 
     user.is_staff = True
     user.is_superuser = True
-    user.set_password(password)  
+    user.set_password(password)
     user.save()
     print("Existing user ko superuser bana diya!")
