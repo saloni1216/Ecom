@@ -7,7 +7,6 @@ from api.order.models import Order
 
 import braintree
 
-# Create your views here.
 
 gateway = braintree.BraintreeGateway(
   braintree.Configuration(
@@ -53,11 +52,11 @@ def process_payment(request, id, token):
 
     if result.is_success:
         User = get_user_model()
-        user = User.objects.get(pk=id)   # get user
+        user = User.objects.get(pk=id)  
 
-    Order.objects.create(            # save order
+    Order.objects.create(            
         user=user,
-        product_name="Test Product",
+       product_name=request.POST.get("product", "Unknown Product"),
         total_product=1,
         transaction_id=result.transaction.id,
         total_amount=result.transaction.amount
