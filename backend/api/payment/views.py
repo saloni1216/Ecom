@@ -27,49 +27,47 @@ def validate_user_session(id, token):
         return False
     except UserModel.DoesNotExist:
         return False
-    
-@csrf_exempt
-def generate_token(request, id, token):
-    if not validate_user_session(id, token):
-        return JsonResponse({'error': 'Invalid session, Please laogin again!'})
-    return JsonResponse({'clientToken': gateway.client_token.generate(), 'success': True})
-
 @csrf_exempt
 def process_payment(request, id, token):
+
     if not validate_user_session(id, token):
-        return JsonResponse({'error': 'Invalid session, Please laogin again!'})
-    
-    nonce_from_the_client = request.POST["paymentMethodNonce"]
-    amount_from_the_client = request.POST["amount"]
+        return JsonResponse({
+            'error': 'Invalid session, Please laogin again!'
+        })
+
+    nonce_from_the_client = request.POST.get("paymentMethodNonce")
+    amount_from_the_client = request.POST.get("amount")
 
     result = gateway.transaction.sale({
-        "amount":amount_from_the_client,
+        "amount": amount_from_the_client,
         "payment_method_nonce": nonce_from_the_client,
         "options": {
-            "submit_for_settlement":True
+            "submit_for_settlement": True
         }
     })
 
     if result.is_success:
+
         User = get_user_model()
-        user = User.objects.get(pk=id)  
+        user = User.objects.get(pk=id)
 
-    Order.objects.create(            
-        user=user,
-       product_name="Test Product",
-        total_product=1,
-        transaction_id=result.transaction.id,
-        total_amount=result.transaction.amount
-    )
+        # ✅ FIXED INDENTATION
+        Order.objects.create(
+            user=user,
+            product_name="Test Product",
+            total_product=1,
+            transaction_id=result.transaction.id,
+            total_amount=result.transaction.amount
+        )
 
-    if result.is_success:
         return JsonResponse({
             "success": result.is_success,
-            'transaction':{
-                'id':result.transaction.id,
-                'amount':result.transaction.amount
-            }
+            "transaction_id": result.transaction.id,
+            "transaction_amount": result.transaction.amount
         })
+
     else:
-        return JsonResponse ({'error': True, 'success': False})
-    
+        return JsonResponse({
+            'error': True,
+            'success': False
+        })

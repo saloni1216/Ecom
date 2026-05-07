@@ -89,12 +89,12 @@ const Menu = () => {
           {isAuthenticated() && (
             <li className="nav-item">
               <Link
-                style={currentTab(history, "/user/dashboard")}
+                style={currentTab(history, "/user/orders")}
                 className="nav-link"
-                to="/user/dashboard"
+                to="/user/orders"
               >
                 <LayoutDashboard size={15} style={iconStyle} />
-                Dashboard
+                Orders
               </Link>
             </li>
           )}

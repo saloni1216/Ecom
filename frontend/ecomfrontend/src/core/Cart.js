@@ -12,7 +12,7 @@ export const Cart = () => {
     const [products, setProducts] = useState([])
 
     useEffect(()=>{
-        setProducts(loadCart())
+       setProducts(loadCart() || [])
     },[reload])
 
     const loadAllProducts = (products) => {
@@ -45,10 +45,10 @@ export const Cart = () => {
         <Base title="Cart Page" description="Welcome to checkout">
             <div className="row text-center cart-row">
                 <div className="col-5 cart-col">
-                    {products.length > 0 ? (loadAllProducts(products)) : (<h4>No products</h4>)}
+                    {products && products.length > 0? (loadAllProducts(products)) : (<h4>No products</h4>)}
                     </div>
                <div className="col-5 cart-col">
-                    {products.length > 0 ? (<PaymentB products={products} setReload={setReload}/>) : (<h4>Please login or add something in cart</h4>)} 
+                    {products && products.length > 0 ? (<PaymentB products={products} setReload={setReload}/>) : (<h4>Please login or add something in cart</h4>)} 
                     </div>
 
             </div>
