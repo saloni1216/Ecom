@@ -27,6 +27,14 @@ def validate_user_session(id, token):
         return False
     except UserModel.DoesNotExist:
         return False
+    
+
+@csrf_exempt
+def generate_token(request, id, token):
+    if not validate_user_session(id, token):
+        return JsonResponse({'error': 'Invalid session, Please laogin again!'})
+    return JsonResponse({'clientToken': gateway.client_token.generate(), 'success': True})
+
 @csrf_exempt
 def process_payment(request, id, token):
 
