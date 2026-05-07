@@ -38,8 +38,8 @@ export const Home = () => {
                 </div>
             </div>
 
-            {/* ✅ Products Grid */}
-            <div style={styles.grid}>
+        
+            <div className="products-grid" style={styles.grid}>
                 {products.map((product, index) => (
                     <div key={index} style={styles.cardWrapper}>
                         <Card product={product} />

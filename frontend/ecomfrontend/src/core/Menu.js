@@ -30,7 +30,7 @@ const Menu = () => {
   return (
     <div>
       <ul
-        className="nav nav-tabs"
+         className="nav nav-tabs custom-navbar"
         style={{
           backgroundColor: "#121212",
           borderBottom: "2px solid #FF4FA3",
@@ -44,6 +44,7 @@ const Menu = () => {
       >
         {/* Left: Brand with Bag Icon */}
         <div
+        className="nav-links"
           style={{
             flex: 1,
             fontSize: "20px",
@@ -60,6 +61,7 @@ const Menu = () => {
 
       
         <div
+        className="nav-links"
           style={{
             flex: 2,
             display: "flex",

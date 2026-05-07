@@ -1,0 +1,126 @@
+/* =========================
+GLOBAL
+========================= */
+
+body {
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* =========================
+TABLET
+========================= */
+
+@media screen and (max-width: 992px) {
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .hero-image {
+    height: 280px !important;
+    right: 20px !important;
+  }
+
+  .hero-title {
+    font-size: 2.4rem !important;
+  }
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media screen and (max-width: 768px) {
+
+  /* NAVBAR */
+
+  .custom-navbar {
+    padding: 15px !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+  }
+
+  /* HERO */
+
+  .hero-section {
+    padding: 40px 20px 60px 20px !important;
+    flex-direction: column !important;
+    text-align: center;
+    min-height: auto !important;
+  }
+
+  .hero-content {
+    max-width: 100% !important;
+  }
+
+  .hero-title {
+    font-size: 2rem !important;
+  }
+
+  .hero-image {
+    position: static !important;
+    height: 220px !important;
+    margin-top: 20px;
+    max-width: 100%;
+  }
+
+  /* PRODUCTS */
+
+  .products-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* CARD BUTTONS */
+
+  .card-buttons {
+    flex-direction: column !important;
+  }
+
+  .card-buttons button {
+    width: 100%;
+  }
+
+  /* CART */
+
+  .cart-row {
+    flex-direction: column !important;
+    align-items: center;
+  }
+
+  .cart-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+}
+
+/* =========================
+SMALL MOBILE
+========================= */
+
+@media screen and (max-width: 480px) {
+
+  .hero-title {
+    font-size: 1.7rem !important;
+  }
+
+  .hero-section {
+    padding: 30px 15px 50px 15px !important;
+  }
+
+  .hero-image {
+    height: 180px !important;
+  }
+}

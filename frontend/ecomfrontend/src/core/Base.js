@@ -17,14 +17,14 @@ export const Base = ({
       <Menu />
 
       {location.pathname === "/" && (
-        <div style={styles.hero}>
+        <div className="hero-section" style={styles.hero}>
           <span style={{ ...styles.sparkle, top: "18%", left: "38%" }}>✦</span>
           <span style={{ ...styles.sparkle, top: "55%", left: "55%", fontSize: "10px" }}>✦</span>
           <span style={{ ...styles.sparkleLg, top: "15%", right: "30%" }}>✦</span>
           <span style={{ ...styles.sparkle, bottom: "20%", right: "18%", fontSize: "10px" }}>✦</span>
           <div style={styles.dotGrid} />
-          <div style={styles.heroContent}>
-            <h1 style={styles.heroTitle}>
+          <div className="hero-content" style={styles.heroContent}>
+            <h1 className="hero-title" style={styles.heroTitle}>
               <span style={styles.heroTitlePink}>Home </span>Page
             </h1>
             <div style={styles.heroUnderline} />
@@ -32,7 +32,7 @@ export const Base = ({
             <p style={styles.heroDesc}>Find the best quality tshirts for your style.</p>
             <button style={styles.heroBtn}>🛍 Shop Now</button>
           </div>
-          <img src={shopperImg} alt="Happy Shopper" style={styles.heroImage} />
+          <img src={shopperImg} alt="Happy Shopper"  className="hero-image" style={styles.heroImage} />
           <svg style={styles.wave} viewBox="0 0 1440 80" preserveAspectRatio="none">
             <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="white" fillOpacity="0.35" />
           </svg>

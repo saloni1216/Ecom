@@ -112,7 +112,7 @@ const Card = ({ product, addtoCart = true, removeFromCart = false, reload = unde
         </p>
 
         {/* Buttons */}
-        <div style={{ display: "flex", gap: "10px", marginTop: "auto" }}>
+        <div   className="card-buttons" style={{ display: "flex", gap: "10px", marginTop: "auto" }}>
           {showAddToCart(addToCart)}
           <button style={{
             flex: 1,
