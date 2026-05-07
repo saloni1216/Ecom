@@ -16,11 +16,14 @@ export const UserOrders = () => {
         }}
       >
 
+        {/* TITLE */}
         <h2
           style={{
             color: "#ff4d88",
-            marginBottom: "20px",
-            fontSize: "24px",
+            marginBottom: "25px",
+            fontSize: "30px",
+            textAlign: "center",
+            fontWeight: "bold",
           }}
         >
           My Orders
@@ -32,24 +35,24 @@ export const UserOrders = () => {
 
             <div
               key={orderIndex}
+              className="order-wrapper"
               style={{
                 display: "flex",
-                gap: "15px",
-                marginBottom: "20px",
+                gap: "20px",
+                marginBottom: "25px",
                 alignItems: "flex-start",
-                flexWrap: "wrap",
               }}
             >
 
               {/* LEFT SIDE */}
               <div
+                className="order-left"
                 style={{
                   flex: 1,
                   background: "#fff",
-                  borderRadius: "12px",
-                  padding: "15px",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
-                  minWidth: "280px",
+                  borderRadius: "16px",
+                  padding: "18px",
+                  boxShadow: "0 4px 15px rgba(0,0,0,0.08)",
                 }}
               >
 
@@ -59,7 +62,9 @@ export const UserOrders = () => {
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
-                    marginBottom: "15px",
+                    flexWrap: "wrap",
+                    gap: "10px",
+                    marginBottom: "20px",
                   }}
                 >
 
@@ -68,7 +73,8 @@ export const UserOrders = () => {
                       style={{
                         margin: 0,
                         color: "#222",
-                        fontSize: "18px",
+                        fontSize: "20px",
+                        fontWeight: "bold",
                       }}
                     >
                       Order #{orderIndex + 1}
@@ -76,9 +82,9 @@ export const UserOrders = () => {
 
                     <p
                       style={{
-                        margin: "5px 0 0 0",
+                        margin: "6px 0 0 0",
                         color: "#777",
-                        fontSize: "12px",
+                        fontSize: "13px",
                       }}
                     >
                       Successfully Placed
@@ -89,7 +95,7 @@ export const UserOrders = () => {
                     style={{
                       background: "#ffe6ef",
                       color: "#ff4d88",
-                      padding: "5px 12px",
+                      padding: "6px 14px",
                       borderRadius: "20px",
                       fontSize: "12px",
                       fontWeight: "bold",
@@ -105,11 +111,13 @@ export const UserOrders = () => {
 
                   <div
                     key={index}
+                    className="product-card"
                     style={{
                       display: "flex",
-                      gap: "12px",
-                      padding: "10px 0",
-                      borderBottom: "1px solid #f2f2f2",
+                      gap: "15px",
+                      paddingBottom: "15px",
+                      marginBottom: "15px",
+                      borderBottom: "1px solid #f1f1f1",
                       alignItems: "center",
                     }}
                   >
@@ -119,10 +127,10 @@ export const UserOrders = () => {
                       src={item.image}
                       alt=""
                       style={{
-                        width: "70px",
-                        height: "70px",
+                        width: "85px",
+                        height: "85px",
                         objectFit: "cover",
-                        borderRadius: "10px",
+                        borderRadius: "12px",
                       }}
                     />
 
@@ -133,7 +141,8 @@ export const UserOrders = () => {
                         style={{
                           margin: 0,
                           color: "#222",
-                          fontSize: "15px",
+                          fontSize: "18px",
+                          fontWeight: "600",
                         }}
                       >
                         {item.name}
@@ -141,9 +150,9 @@ export const UserOrders = () => {
 
                       <p
                         style={{
-                          margin: "4px 0",
+                          margin: "6px 0",
                           color: "#888",
-                          fontSize: "12px",
+                          fontSize: "13px",
                         }}
                       >
                         {item.description}
@@ -154,7 +163,7 @@ export const UserOrders = () => {
                           margin: 0,
                           color: "#ff4d88",
                           fontWeight: "bold",
-                          fontSize: "14px",
+                          fontSize: "16px",
                         }}
                       >
                         ₹ {item.price}
@@ -167,23 +176,25 @@ export const UserOrders = () => {
                 ))}
 
                 {/* TRACKING */}
-                <div style={{ marginTop: "18px" }}>
+                <div style={{ marginTop: "20px" }}>
 
                   <h4
                     style={{
                       color: "#222",
-                      marginBottom: "15px",
-                      fontSize: "16px",
+                      marginBottom: "18px",
+                      fontSize: "18px",
+                      fontWeight: "bold",
                     }}
                   >
                     Order Tracking
                   </h4>
 
                   <div
+                    className="tracking-wrapper"
                     style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
+                      display: "grid",
+                      gridTemplateColumns: "repeat(4, 1fr)",
+                      gap: "15px",
                       textAlign: "center",
                     }}
                   >
@@ -195,18 +206,23 @@ export const UserOrders = () => {
                       "Delivered",
                     ].map((step, i) => (
 
-                      <div key={i} style={{ flex: 1 }}>
+                      <div
+                        key={i}
+                        style={{
+                          minWidth: "60px",
+                        }}
+                      >
 
                         <div
                           style={{
-                            width: "28px",
-                            height: "28px",
+                            width: "34px",
+                            height: "34px",
                             borderRadius: "50%",
                             background: i === 0 ? "#ff4d88" : "#ddd",
                             color: "#fff",
-                            margin: "0 auto 6px",
-                            lineHeight: "28px",
-                            fontSize: "13px",
+                            margin: "0 auto 8px",
+                            lineHeight: "34px",
+                            fontSize: "14px",
                             fontWeight: "bold",
                           }}
                         >
@@ -215,9 +231,10 @@ export const UserOrders = () => {
 
                         <p
                           style={{
-                            fontSize: "11px",
+                            fontSize: "12px",
                             color: "#666",
                             margin: 0,
+                            lineHeight: "18px",
                           }}
                         >
                           {step}
@@ -235,12 +252,13 @@ export const UserOrders = () => {
 
               {/* RIGHT SIDE */}
               <div
+                className="order-summary"
                 style={{
-                  width: "220px",
+                  width: "260px",
                   background: "#fff",
-                  borderRadius: "12px",
-                  padding: "15px",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+                  borderRadius: "16px",
+                  padding: "18px",
+                  boxShadow: "0 4px 15px rgba(0,0,0,0.08)",
                   height: "fit-content",
                 }}
               >
@@ -248,8 +266,9 @@ export const UserOrders = () => {
                 <h3
                   style={{
                     color: "#ff4d88",
-                    marginBottom: "15px",
-                    fontSize: "18px",
+                    marginBottom: "18px",
+                    fontSize: "22px",
+                    fontWeight: "bold",
                   }}
                 >
                   Order Summary
@@ -259,8 +278,8 @@ export const UserOrders = () => {
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
-                    marginBottom: "10px",
-                    fontSize: "14px",
+                    marginBottom: "14px",
+                    fontSize: "15px",
                   }}
                 >
                   <span>Total</span>
@@ -271,8 +290,8 @@ export const UserOrders = () => {
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
-                    marginBottom: "10px",
-                    fontSize: "14px",
+                    marginBottom: "14px",
+                    fontSize: "15px",
                   }}
                 >
                   <span>Payment</span>
@@ -283,9 +302,9 @@ export const UserOrders = () => {
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
-                    fontWeight: "bold",
                     color: "#ff4d88",
-                    fontSize: "14px",
+                    fontWeight: "bold",
+                    fontSize: "15px",
                   }}
                 >
                   <span>Status</span>
@@ -303,9 +322,10 @@ export const UserOrders = () => {
           <div
             style={{
               background: "#fff",
-              padding: "40px",
-              borderRadius: "12px",
+              padding: "50px 20px",
+              borderRadius: "16px",
               textAlign: "center",
+              boxShadow: "0 4px 15px rgba(0,0,0,0.08)",
             }}
           >
             <h3 style={{ color: "#888" }}>
@@ -316,6 +336,66 @@ export const UserOrders = () => {
         )}
 
       </div>
+
+      {/* RESPONSIVE CSS */}
+      <style>
+        {`
+
+          @media (max-width: 992px) {
+
+            .order-wrapper {
+              flex-direction: column;
+            }
+
+            .order-summary {
+              width: 100% !important;
+            }
+
+          }
+
+          @media (max-width: 768px) {
+
+            .product-card {
+              flex-direction: column;
+              align-items: flex-start !important;
+            }
+
+            .tracking-wrapper {
+              grid-template-columns: repeat(2, 1fr) !important;
+              gap: 20px !important;
+            }
+
+            .order-left {
+              padding: 15px !important;
+            }
+
+            .order-summary {
+              padding: 15px !important;
+            }
+
+          }
+
+          @media (max-width: 480px) {
+
+            .tracking-wrapper {
+              grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            .order-left {
+              min-width: 100% !important;
+              padding: 12px !important;
+            }
+
+            .order-summary {
+              width: 100% !important;
+              padding: 12px !important;
+            }
+
+          }
+
+        `}
+      </style>
+
     </Base>
   );
 };
